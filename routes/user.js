@@ -1,13 +1,13 @@
 const router = require('express').Router()
-const authen = require('./authen')
+const auth = require('../configs/auth')
 
 /* GET users listing. */
-router.get('/',  authen.optional, (req, res, next) => {
+router.get('/',  auth.optional, (req, res, next) => {
   res.send('respond with a resource')
 });
 
 /* GET user profile. */
-router.get('/profile', authen.required, (req, res, next)  => {
+router.get('/profile', auth.required, (req, res, next)  => {
   res.send(req.payload)
 });
 
