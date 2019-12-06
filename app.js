@@ -11,7 +11,7 @@ require('./configs/passport');
 
 // Routes
 app.use('/auth', require('./routes/auth'))
-app.use('/user',  passport.authenticate('jwt', {session: false}), require('./routes/user'))
+app.use('/user', require('./routes/user'))
 
 // Error Handler
 app.use((err, req, res, next) => {

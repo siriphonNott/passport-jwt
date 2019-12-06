@@ -24,22 +24,3 @@ passport.use(new LocalStrategy({
     return cb(null, user, {message: 'Logged In Successfully'})
   }
 ));
-
-passport.use(new JWTStrategy({
-        jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-        secretOrKey   : 'your_jwt_secret'
-    },
-    (jwtPayload, cb) => {
-
-      try {
-        // find the user in db if needed
-        if(jwtPayload.id == user.id) {
-          return cb(null, user);
-        } else {
-          return cb(null, false);
-        }
-      } catch (error) {
-        return cb(error, false);
-      }
-    }
-));
